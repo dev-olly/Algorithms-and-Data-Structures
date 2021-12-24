@@ -1,19 +1,16 @@
 function miniMaxSum(arr) {
   // Write your code here
-  arr.sort((a, b) => a - b);
-  let first = 0;
-  let second = 0;
-  let i = 0;
-  let j = arr.length - 1;
+  let sum = 0;
+  let min = arr[0];
+  let max = 0;
 
-  while (i < 4 && j > 0) {
-    first += arr[i];
-    second += arr[j];
-    i++;
-    j--;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    min = Math.min(min, arr[i]);
+    max = Math.max(max, arr[i]);
   }
 
-  console.log(Math.min(first, second), Math.max(first, second));
+  console.log(sum - max, sum - min);
 }
 
 const arr = [7, 69, 2, 221, 8974];
