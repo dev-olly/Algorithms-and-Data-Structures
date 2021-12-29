@@ -22,4 +22,3 @@ def countKAverageSubarrays(arr, n, k):
                     res += 1
              
     return res
- 

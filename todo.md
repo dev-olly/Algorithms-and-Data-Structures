@@ -1,2 +1,3 @@
-- MergeSort(iteration and recursion)
+- MergeSort(iteration)
 - HeapSort
+- Quicksort
