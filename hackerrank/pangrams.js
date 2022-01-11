@@ -3,7 +3,7 @@ function pangrams(s) {
   if (s.length < 26) {
     return 'not pangram';
   }
-  const set1 = new Set(s.replace(/ /g, '').toLowerCase());
+  const set1 = new Set(s);
   return set1.size === 26 ? 'pangram' : 'not pangram';
 }
 
