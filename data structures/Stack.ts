@@ -1,20 +1,21 @@
 class Stack {
-  constructor(arr) {
+  arr: number[];
+  constructor(arr: number[]) {
     this.arr = arr;
   }
-  isEmpty() {
+  isEmpty(): boolean {
     return this.arr.length === 0;
   }
-  push(item) {
+  push(item: number): number[] {
     this.arr.push(item);
     return this.arr;
   }
-  pop() {
+  pop(): number[] {
     this.arr.pop();
     return this.arr;
   }
 
-  size() {
+  size(): number {
     return this.arr.length;
   }
 }

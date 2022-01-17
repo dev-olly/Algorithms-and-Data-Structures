@@ -4,45 +4,26 @@ var isValid = function (s) {
   }
 
   const map = new Map();
+  map.set('}', '{');
+  map.set(')', '(');
+  map.set(']', '[');
+
+  const stack = [];
 
   for (let i = 0; i < s.length; i++) {
-    if (map.has(s[i])) {
-      map.set(s[i], map.get(s[i]) + 1);
+    if (!map.has(s[i])) {
+      stack.push(s[i]);
     } else {
-      if (s[i] === ')') {
-        if (!map.has('(')) {
-          return false;
-        } else {
-          map.set('(', map.get('(') - 1);
-          if (map.get('(') === 0) {
-            map.delete('(');
-          }
-        }
-      } else if (s[i] === '}') {
-        if (!map.has('{')) {
-          return false;
-        } else {
-          map.set('{', map.get('{') - 1);
-          if (map.get('{') === 0) {
-            map.delete('{');
-          }
-        }
-      } else if (s[i] === ']') {
-        if (!map.has('[')) {
-          return false;
-        } else {
-          map.set('[', map.get('[') - 1);
-          if (map.get('[') === 0) {
-            map.delete('[');
-          }
-        }
+      const lastItem = stack[stack.length - 1];
+      if (map.get(s[i]) !== lastItem) {
+        return false;
       } else {
-        map.set(s[i], 1);
+        stack.pop();
       }
     }
   }
 
-  return map.size === 0;
+  return stack.length === 0;
 };
 
 const s = '()[]{}';
