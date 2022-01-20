@@ -1,11 +1,13 @@
 interface ILinkedList<T> {
   head: LinkedListNode<T>;
+  count: number;
   isEmpty(): boolean;
   size(): number;
   insert(data: T): LinkedListNode<T>;
 }
 class LinkedList<T> implements ILinkedList<T> {
   public head: LinkedListNode<T> = null;
+  public count: number = 0;
 
   constructor() {}
 
@@ -21,12 +23,12 @@ class LinkedList<T> implements ILinkedList<T> {
       node.next = this.head;
       this.head = node;
     }
-
+    this.count++;
     return node;
   }
 
   size(): number {
-    return 1;
+    return this.count;
   }
 }
 
@@ -46,3 +48,4 @@ console.log(linked.insert(1));
 console.log(linked.insert(2));
 console.log(linked.insert(3));
 console.log(linked.isEmpty());
+console.log(linked.size());
