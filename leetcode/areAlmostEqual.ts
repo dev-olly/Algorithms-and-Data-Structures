@@ -10,8 +10,8 @@ function areAlmostEqual(s1: string, s2: string): boolean {
   const secondMap = new Map<string, number>();
 
   for (let i: number = 0; i < s1.length; i++) {
-    firstMap.set(s1[i], firstMap.get(s1[i]) || 0 + 1);
-    secondMap.set(s2[i], secondMap.get(s2[i]) || 0 + 1);
+    firstMap.set(s1[i], firstMap.has(s1[i]) ? firstMap.get(s1[i]) + 1 : 1);
+    secondMap.set(s2[i], secondMap.has(s2[i]) ? secondMap.get(s2[i]) + 1 : 1);
   }
 
   for (let i: number = 0; i < s1.length; i++) {
@@ -19,10 +19,19 @@ function areAlmostEqual(s1: string, s2: string): boolean {
       return false;
     }
   }
-  return true;
+
+  let count: number = 0;
+
+  for (let i: number = 0; i < s1.length; i++) {
+    if (s1[i] !== s2[i]) {
+      count++;
+    }
+  }
+
+  return count <= 2;
 }
 
-const s1: string = 'attack';
-const s2: string = 'defend';
+const s1: string = 'aa';
+const s2: string = 'ac';
 
 console.log(areAlmostEqual(s1, s2));
