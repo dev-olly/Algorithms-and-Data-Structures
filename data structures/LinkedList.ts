@@ -4,6 +4,7 @@ interface ILinkedList<T> {
   isEmpty(): boolean;
   size(): number;
   insert(data: T): LinkedListNode<T>;
+  traverse(): void;
 }
 class LinkedList<T> implements ILinkedList<T> {
   public head: LinkedListNode<T> = null;
@@ -30,6 +31,14 @@ class LinkedList<T> implements ILinkedList<T> {
   size(): number {
     return this.count;
   }
+
+  traverse(): void {
+    let node = this.head;
+    while (node !== null) {
+      console.log(node);
+      node = node.next;
+    }
+  }
 }
 
 class LinkedListNode<T> {
@@ -44,8 +53,9 @@ class LinkedListNode<T> {
 const linked: LinkedList<number> = new LinkedList();
 
 console.log(linked.isEmpty());
-console.log(linked.insert(1));
-console.log(linked.insert(2));
-console.log(linked.insert(3));
+linked.insert(1);
+linked.insert(2);
+linked.insert(3);
+linked.traverse();
 console.log(linked.isEmpty());
 console.log(linked.size());
