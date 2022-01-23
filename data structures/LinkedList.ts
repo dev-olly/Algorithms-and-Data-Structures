@@ -11,6 +11,7 @@ interface ILinkedList<T> {
   traverse(): void;
   indexOf(data: T): number;
   toArray(): T[];
+  contains(data: T): boolean;
 }
 class LinkedList<T> implements ILinkedList<T> {
   public head: LinkedListNode<T> = null;
@@ -69,10 +70,22 @@ class LinkedList<T> implements ILinkedList<T> {
     }
   }
   indexOf(data: T): number {
-    return 1;
+    let index = -1;
+    let node = this.head;
+    while (node) {
+      index++;
+      if (node.value === data) {
+        return index;
+      }
+      node = node.next;
+    }
+    return -1;
   }
   toArray(): T[] {
     return [];
+  }
+  contains(data: T): boolean {
+    return true;
   }
 }
 
@@ -92,8 +105,9 @@ linked.addFirst(2);
 linked.addFirst(1);
 linked.addLast(3);
 linked.addLast(4);
-linked.popFirst();
-linked.popLast();
-linked.traverse();
+// linked.popFirst();
+// linked.popLast();
+// linked.traverse();
+console.log(linked.indexOf(3));
 console.log(linked.isEmpty());
 console.log(linked.size());
