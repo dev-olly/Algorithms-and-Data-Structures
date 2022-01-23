@@ -4,11 +4,13 @@ interface ILinkedList<T> {
   count: number;
   isEmpty(): boolean;
   size(): number;
-  insertAtTheBeginning(data: T): LinkedListNode<T>;
-  insertAtTheEnd(data: T): LinkedListNode<T>;
-  popHead(): void;
-  popTail(): void;
+  addFirst(data: T): LinkedListNode<T>;
+  addLast(data: T): LinkedListNode<T>;
+  popFirst(): void;
+  popLast(): void;
   traverse(): void;
+  indexOf(data: T): number;
+  toArray(): T[];
 }
 class LinkedList<T> implements ILinkedList<T> {
   public head: LinkedListNode<T> = null;
@@ -21,7 +23,7 @@ class LinkedList<T> implements ILinkedList<T> {
     return this.head === null;
   }
 
-  insertAtTheBeginning(data: T): LinkedListNode<T> {
+  addFirst(data: T): LinkedListNode<T> {
     const node = new LinkedListNode(data);
     if (!this.head) {
       this.head = node;
@@ -33,7 +35,7 @@ class LinkedList<T> implements ILinkedList<T> {
     this.count++;
     return node;
   }
-  insertAtTheEnd(data: T): LinkedListNode<T> {
+  addLast(data: T): LinkedListNode<T> {
     const node = new LinkedListNode(data);
     if (!this.head) {
       this.head = node;
@@ -45,10 +47,10 @@ class LinkedList<T> implements ILinkedList<T> {
     this.count++;
     return node;
   }
-  popHead(): void {
+  popFirst(): void {
     this.head = this.head.next;
   }
-  popTail(): void {
+  popLast(): void {
     let node = this.head;
     while (node.next.next) {
       node = node.next;
@@ -66,6 +68,12 @@ class LinkedList<T> implements ILinkedList<T> {
       node = node.next;
     }
   }
+  indexOf(data: T): number {
+    return 1;
+  }
+  toArray(): T[] {
+    return [];
+  }
 }
 
 class LinkedListNode<T> {
@@ -80,12 +88,12 @@ class LinkedListNode<T> {
 const linked: LinkedList<number> = new LinkedList();
 
 console.log(linked.isEmpty());
-linked.insertAtTheBeginning(2);
-linked.insertAtTheBeginning(1);
-linked.insertAtTheEnd(3);
-linked.insertAtTheEnd(4);
-linked.popHead();
-linked.popTail();
+linked.addFirst(2);
+linked.addFirst(1);
+linked.addLast(3);
+linked.addLast(4);
+linked.popFirst();
+linked.popLast();
 linked.traverse();
 console.log(linked.isEmpty());
 console.log(linked.size());
