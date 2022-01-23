@@ -82,7 +82,13 @@ class LinkedList<T> implements ILinkedList<T> {
     return -1;
   }
   toArray(): T[] {
-    return [];
+    const arr = [];
+    let node = this.head;
+    while (node) {
+      arr.push(node.value);
+      node = node.next;
+    }
+    return arr;
   }
   contains(data: T): boolean {
     const dataIndex = this.indexOf(data);
@@ -112,6 +118,7 @@ linked.addLast(4);
 // linked.traverse();
 console.log(linked.indexOf(3));
 console.log(linked.contains(10));
+console.log(linked.toArray());
 
 // console.log(linked.isEmpty());
 // console.log(linked.size());
