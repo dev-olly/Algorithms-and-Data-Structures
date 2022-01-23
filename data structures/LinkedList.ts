@@ -85,7 +85,8 @@ class LinkedList<T> implements ILinkedList<T> {
     return [];
   }
   contains(data: T): boolean {
-    return true;
+    const dataIndex = this.indexOf(data);
+    return dataIndex !== -1;
   }
 }
 
@@ -105,9 +106,12 @@ linked.addFirst(2);
 linked.addFirst(1);
 linked.addLast(3);
 linked.addLast(4);
+
 // linked.popFirst();
 // linked.popLast();
 // linked.traverse();
 console.log(linked.indexOf(3));
-console.log(linked.isEmpty());
-console.log(linked.size());
+console.log(linked.contains(10));
+
+// console.log(linked.isEmpty());
+// console.log(linked.size());
