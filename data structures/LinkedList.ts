@@ -114,10 +114,10 @@ linked.addLast(3);
 linked.addLast(4);
 
 // linked.popFirst();
-// linked.popLast();
+linked.popLast();
 // linked.traverse();
-console.log(linked.indexOf(3));
-console.log(linked.contains(10));
+// console.log(linked.indexOf(3));
+// console.log(linked.contains(10));
 console.log(linked.toArray());
 
 // console.log(linked.isEmpty());
