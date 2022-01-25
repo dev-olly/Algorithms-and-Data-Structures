@@ -2,7 +2,7 @@ function mergeTwoLists(
   list1: ListNode | null,
   list2: ListNode | null
 ): ListNode | null {
-  let sentinel = new ListNode(-100);
+  let sentinel = new ListNode(-101);
   let first = list1;
   let second = list2;
   let curr = sentinel;
@@ -24,14 +24,12 @@ function mergeTwoLists(
     curr = curr.next;
   }
 
-  while (first) {
+  if (first) {
     curr.next = first;
-    first = first.next;
     curr = curr.next;
   }
-  while (second) {
+  if (second) {
     curr.next = second;
-    second = second.next;
     curr = curr.next;
   }
 
