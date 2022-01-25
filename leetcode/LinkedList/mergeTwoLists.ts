@@ -1,23 +1,41 @@
 function mergeTwoLists(
-  l1: ListNode | null,
-  l2: ListNode | null
+  list1: ListNode | null,
+  list2: ListNode | null
 ): ListNode | null {
-  const newHead: ListNode = new ListNode();
-  let curr = newHead;
-  while (l1 && l2) {
-    if (l1.val < l2.val) {
-      curr.next = l1;
-      l1 = l1.next;
+  let sentinel = new ListNode(-100);
+  let first = list1;
+  let second = list2;
+  let curr = sentinel;
+
+  while (first !== null && second !== null) {
+    if (first.val < second.val) {
+      curr.next = first;
+      first = first.next;
+    } else if (first.val > second.val) {
+      curr.next = second;
+      second = second.next;
     } else {
-      curr.next = l2;
-      l2 = l2.next;
+      curr.next = first;
+      first = first.next;
+      curr = curr.next;
+      curr.next = second;
+      second = second.next;
     }
     curr = curr.next;
   }
-  curr.next = l1 || l2;
-  return newHead.next;
-  // T.C: O(M + N)
-  // S.C: O(1)
+
+  while (first) {
+    curr.next = first;
+    first = first.next;
+    curr = curr.next;
+  }
+  while (second) {
+    curr.next = second;
+    second = second.next;
+    curr = curr.next;
+  }
+
+  return sentinel.next;
 }
 
 class ListNode {
