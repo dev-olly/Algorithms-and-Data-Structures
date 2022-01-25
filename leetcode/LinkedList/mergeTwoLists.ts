@@ -3,35 +3,20 @@ function mergeTwoLists(
   list2: ListNode | null
 ): ListNode | null {
   let sentinel = new ListNode(-101);
-  let first = list1;
-  let second = list2;
   let curr = sentinel;
 
-  while (first !== null && second !== null) {
-    if (first.val < second.val) {
-      curr.next = first;
-      first = first.next;
-    } else if (first.val > second.val) {
-      curr.next = second;
-      second = second.next;
-    } else {
-      curr.next = first;
-      first = first.next;
-      curr = curr.next;
-      curr.next = second;
-      second = second.next;
+  while (list1 !== null && list2 !== null) {
+    if (list1.val <= list2.val) {
+      curr.next = list1;
+      list1 = list1.next;
+    } else if (list1.val > list2.val) {
+      curr.next = list2;
+      list2 = list2.next;
     }
     curr = curr.next;
   }
 
-  if (first) {
-    curr.next = first;
-    curr = curr.next;
-  }
-  if (second) {
-    curr.next = second;
-    curr = curr.next;
-  }
+  curr.next = list1 === null ? list2 : list1;
 
   return sentinel.next;
 }
