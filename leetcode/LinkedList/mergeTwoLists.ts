@@ -1,3 +1,12 @@
+class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+
 function mergeTwoLists(
   list1: ListNode | null,
   list2: ListNode | null
@@ -21,16 +30,7 @@ function mergeTwoLists(
   return sentinel.next;
 }
 
-class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
-const list1 = [1, 2, 4];
-const list2 = [1, 3, 4];
+const list1 = new ListNode(1, new ListNode(2, new ListNode(3, null)));
+const list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 
 console.log(mergeTwoLists(list1, list2));
