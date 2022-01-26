@@ -23,7 +23,8 @@ function addTwoNumbers(
       sum = sum % 10;
     }
 
-    curr.next = new ListNode(sum);
+    l1.val = sum;
+    curr.next = l1;
     curr = curr.next;
     l1 = l1.next;
     l2 = l2.next;
@@ -35,7 +36,8 @@ function addTwoNumbers(
       rem = Math.floor(sum / 10);
       sum = sum % 10;
     }
-    curr.next = new ListNode(sum);
+    l1.val = sum;
+    curr.next = l1;
     curr = curr.next;
     l1 = l1.next;
   }
@@ -46,7 +48,8 @@ function addTwoNumbers(
       rem = Math.floor(sum / 10);
       sum = sum % 10;
     }
-    curr.next = new ListNode(sum);
+    l2.val = sum;
+    curr.next = l2;
     curr = curr.next;
     l2 = l2.next;
   }
