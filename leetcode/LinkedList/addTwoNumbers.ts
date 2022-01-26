@@ -17,11 +17,8 @@ function addTwoNumbers(
 
   while (l1 && l2) {
     let sum = l1.val + l2.val + rem;
-    rem = 0;
-    if (sum > 9) {
-      rem = Math.floor(sum / 10);
-      sum = sum % 10;
-    }
+    rem = sum > 9 ? Math.floor(sum / 10) : 0;
+    sum = sum > 9 ? sum % 10 : sum;
 
     l1.val = sum;
     curr.next = l1;
@@ -32,10 +29,9 @@ function addTwoNumbers(
   while (l1) {
     let sum = l1.val + rem;
     rem = 0;
-    if (sum > 9) {
-      rem = Math.floor(sum / 10);
-      sum = sum % 10;
-    }
+    rem = sum > 9 ? Math.floor(sum / 10) : 0;
+    sum = sum > 9 ? sum % 10 : sum;
+
     l1.val = sum;
     curr.next = l1;
     curr = curr.next;
@@ -43,11 +39,8 @@ function addTwoNumbers(
   }
   while (l2) {
     let sum = l2.val + rem;
-    rem = 0;
-    if (sum > 9) {
-      rem = Math.floor(sum / 10);
-      sum = sum % 10;
-    }
+    rem = sum > 9 ? Math.floor(sum / 10) : 0;
+    sum = sum > 9 ? sum % 10 : sum;
     l2.val = sum;
     curr.next = l2;
     curr = curr.next;
