@@ -27,8 +27,6 @@ function deleteMiddle(head: ListNode | null): ListNode | null {
   }
 
   while (i != mid) {
-    console.log('here');
-
     if (mid - i === 1) {
       head.next = head.next.next;
     } else {
