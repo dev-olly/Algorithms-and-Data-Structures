@@ -7,6 +7,7 @@ class ListNode {
   }
 }
 
+// My approach
 function middleNode(head: ListNode | null): ListNode | null {
   let length = 0;
   let curr = head;
@@ -24,6 +25,10 @@ function middleNode(head: ListNode | null): ListNode | null {
   return head;
 }
 
+// Leetcode approach 1
+function middleNode(head: ListNode | null): ListNode | null {
+  return head;
+}
 const head = new ListNode(1, new ListNode(2, new ListNode(3, null)));
 
 console.log(middleNode(head));
