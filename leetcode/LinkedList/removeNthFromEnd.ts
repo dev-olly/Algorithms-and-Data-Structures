@@ -16,16 +16,16 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   }
   let sentinel = new ListNode(-1);
   sentinel.next = head;
-  curr = head;
+  curr = sentinel;
   const num = length - n;
   let i = 0;
 
   while (i < num) {
     curr = curr.next;
-    ++i;
+    i++;
   }
   curr.next = curr.next.next;
-  return head;
+  return sentinel.next;
 }
 
 const head = new ListNode(
