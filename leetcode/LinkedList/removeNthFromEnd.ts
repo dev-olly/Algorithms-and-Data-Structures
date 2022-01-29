@@ -7,7 +7,7 @@ class ListNode {
   }
 }
 
-function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+/* function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   let length = 0;
   let curr = head;
   while (curr) {
@@ -26,6 +26,29 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   }
   curr.next = curr.next.next;
   return sentinel.next;
+} */
+
+// 2 pointer strategy
+
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+  let slow = head;
+  let fast = head;
+
+  let i = 0;
+  while (i < n && fast.next) {
+    i++;
+    fast = fast.next;
+  }
+  if (i < n && !fast.next) {
+    return head.next;
+  }
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  slow.next = slow.next.next;
+  return head;
 }
 
 const head = new ListNode(
