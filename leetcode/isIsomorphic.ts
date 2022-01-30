@@ -10,7 +10,14 @@ function isIsomorphic(s: string, t: string): boolean {
         return false;
       }
     } else {
-      hashtable(s[i]);
+      hashtable.set(s[i], t[i]);
     }
   }
+
+  return true;
 }
+
+const s = 'paper';
+const t = 'title';
+
+console.log(isIsomorphic(s, t));
