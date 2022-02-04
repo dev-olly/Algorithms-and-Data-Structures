@@ -21,3 +21,5 @@ function pickingNumbers(a: number[]): number {
 const a = [1, 1, 2, 2, 4, 4, 5, 5, 5];
 
 console.log(pickingNumbers(a));
+
+// https://programmercave0.github.io/blog/2020/03/28/Picking-Numbers-HackerRank-Challenge-Cpp-Implementation
