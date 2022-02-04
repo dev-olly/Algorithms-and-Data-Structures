@@ -1,37 +1,25 @@
 function findAnagrams(s: string, p: string): number[] {
-  const start = [];
+  const output = [];
   const n = p.length;
   const alphabets = new Array(26).fill(0);
-  for (let i: number = 0; i < p.length; i++) {
+  const sCount = new Array(26).fill(0);
+
+  for (let i: number = 0; i < n; i++) {
     alphabets[p.charCodeAt(i) - 'a'.charCodeAt(0)]++;
   }
 
-  let i = 0;
-  let j = i + n - 1;
-
-  while (j < s.length) {
-    const copy = [...alphabets];
-
-    const sub = s.substring(i, j + 1);
-
-    let anagram = true;
-
-    for (let k: number = 0; k < sub.length; k++) {
-      copy[sub.charCodeAt(k) - 'a'.charCodeAt(0)]--;
-      if (copy[sub.charCodeAt(k) - 'a'.charCodeAt(0)] < 0) {
-        anagram = false;
-        break;
-      }
+  for (let i: number = 0; i < s.length; i++) {
+    sCount[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+    if (i >= n) {
+      sCount[s.charCodeAt(i - n) - 'a'.charCodeAt(0)]--;
     }
 
-    if (anagram) {
-      start.push(i);
+    if (sCount.toString() === alphabets.toString()) {
+      output.push(i - n + 1);
     }
-    i++;
-    j++;
   }
 
-  return start;
+  return output;
 }
 
 const s = 'abab';
