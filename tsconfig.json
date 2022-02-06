@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strictNullChecks": false,
+    "target": "es6",
     "lib": ["es2015", "dom"]
   }
 }
