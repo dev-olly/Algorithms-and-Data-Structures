@@ -105,20 +105,22 @@ class LinkedListNode<T> {
   }
 }
 
-const linked: LinkedList<number> = new LinkedList();
-
-console.log(linked.isEmpty());
-linked.addFirst(2);
-linked.addFirst(1);
-linked.addLast(3);
-linked.addLast(4);
-
-// linked.popFirst();
-linked.popLast();
-// linked.traverse();
-// console.log(linked.indexOf(3));
-// console.log(linked.contains(10));
-console.log(linked.toArray());
+// const linked: LinkedList<number> = new LinkedList();
 
 // console.log(linked.isEmpty());
-// console.log(linked.size());
+// linked.addFirst(2);
+// linked.addFirst(1);
+// linked.addLast(3);
+// linked.addLast(4);
+
+// // linked.popFirst();
+// linked.popLast();
+// // linked.traverse();
+// // console.log(linked.indexOf(3));
+// // console.log(linked.contains(10));
+// console.log(linked.toArray());
+
+// // console.log(linked.isEmpty());
+// // console.log(linked.size());
+
+export default LinkedList;
