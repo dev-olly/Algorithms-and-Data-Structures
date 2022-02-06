@@ -1,16 +1,25 @@
-class Stack {
-  arr: number[];
-  constructor(arr: number[]) {
+// Array based implementation of Stack
+
+interface IStack<T> {
+  arr: T[];
+  isEmpty(): boolean;
+  push(T): T[];
+  pop(T): T[];
+  size(): number;
+}
+class Stack<T> implements IStack<T> {
+  arr: T[];
+  constructor(arr: T[]) {
     this.arr = arr;
   }
   isEmpty(): boolean {
     return this.arr.length === 0;
   }
-  push(item: number): number[] {
+  push(item: T): T[] {
     this.arr.push(item);
     return this.arr;
   }
-  pop(): number[] {
+  pop(): T[] {
     this.arr.pop();
     return this.arr;
   }
