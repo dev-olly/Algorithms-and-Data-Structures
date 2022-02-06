@@ -1,13 +1,13 @@
 // Array based implementation of Stack
 
-interface IStack<T> {
+interface IArrayStack<T> {
   arr: T[];
   isEmpty(): boolean;
   push(T): T[];
   pop(T): T[];
   size(): number;
 }
-class Stack<T> implements IStack<T> {
+class ArrayStack<T> implements IArrayStack<T> {
   arr: T[];
   constructor(arr: T[]) {
     this.arr = arr;
@@ -29,7 +29,7 @@ class Stack<T> implements IStack<T> {
   }
 }
 
-const stack = new Stack([1, 2, 3, 4, 5]);
+const stack = new ArrayStack([1, 2, 3, 4, 5]);
 console.log(stack.push(6));
 console.log(stack.pop());
 console.log(stack.size());
