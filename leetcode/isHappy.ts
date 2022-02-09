@@ -1,15 +1,15 @@
-function isHappy(n: number): boolean {
-  const hashset = new Set<number>();
-  let sum = sumOfDigitSquare(n);
-  while (!hashset.has(sum) && sum > 1) {
-    hashset.add(sum);
-    sum = sumOfDigitSquare(sum);
-  }
+// function isHappy(n: number): boolean {
+//   const hashset = new Set<number>();
+//   let sum = getNext(n);
+//   while (!hashset.has(sum) && sum > 1) {
+//     hashset.add(sum);
+//     sum = getNext(sum);
+//   }
 
-  return sum === 1;
-}
+//   return sum === 1;
+// }
 
-function sumOfDigitSquare(s) {
+function getNext(s) {
   let sum = 0;
 
   while (s > 9) {
@@ -21,7 +21,19 @@ function sumOfDigitSquare(s) {
   return sum;
 }
 
-const n = 19;
+function isHappy(n: number): boolean {
+  let slow = getNext(n);
+  let fast = getNext(getNext(n));
+
+  while (slow !== fast && fast !== 1) {
+    slow = getNext(slow);
+    fast = getNext(getNext(fast));
+  }
+
+  return fast === 1;
+}
+
+const n = 2;
 
 console.log(isHappy(n));
 
