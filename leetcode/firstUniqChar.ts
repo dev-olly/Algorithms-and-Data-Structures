@@ -1,19 +1,20 @@
 function firstUniqChar(s: string): number {
-  const hashset = new Set<string>();
+  if (s.length === 1) {
+    return 0;
+  }
+  const hashmap = new Map<string, number>();
 
   for (let i: number = 0; i < s.length; i++) {
-    if (hashset.has(s.charAt(i))) {
-      hashset.delete(s.charAt(i));
+    if (hashmap.has(s.charAt(i))) {
+      hashmap.set(s.charAt(i), hashmap.get(s.charAt(i)) + 1);
     } else {
-      hashset.add(s.charAt(i));
+      hashmap.set(s.charAt(i), 1);
     }
   }
 
-  if (hashset.size === 0) {
-    return -1;
-  }
+  const first = hashmap.values().next().value;
 
-  const first = hashset.values().next().value;
+  // while(first === 1 & )
 
   for (let i: number = 0; i < s.length; i++) {
     if (s.charAt(i) === first) {
