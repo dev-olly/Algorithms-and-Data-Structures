@@ -11,16 +11,14 @@ function firstUniqChar(s: string): number {
       hashmap.set(s.charAt(i), 1);
     }
   }
-
-  const first = hashmap.values().next().value;
-
-  // while(first === 1 & )
-
+  let first = '';
   for (let i: number = 0; i < s.length; i++) {
-    if (s.charAt(i) === first) {
+    if (hashmap.get(s.charAt(i)) == 1) {
       return i;
     }
   }
+
+  return -1;
 }
 
 const s = 'aadadaad';
