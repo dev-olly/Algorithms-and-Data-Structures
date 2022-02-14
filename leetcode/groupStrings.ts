@@ -3,7 +3,7 @@ function groupStrings(strings: string[]): string[][] {
   const hashmap = new Map<string, number>();
 
   for (let i: number = 0; i < strings.length; i++) {
-    const key = generateHashKey(strings[i]);
+    const key = hash(strings[i]);
 
     if (hashmap.has(key)) {
       const index = hashmap.get(key);
@@ -17,18 +17,22 @@ function groupStrings(strings: string[]): string[][] {
   return output;
 }
 
-function generateHashKey(s: string): string {
-  let key = `${s.length}`;
-  let diff = 0;
-  for (let j: number = s.length - 1; j >= 1; j--) {
-    diff += (s[j].charCodeAt(0) - s[j - 1].charCodeAt(0)) % 26;
+function hash(s: string): string {
+  let hashkey = `${s.length}0`;
+
+  for (let i: number = 1; i < s.length; i++) {
+    let index = s.charCodeAt(i) - s.charCodeAt(i - 1);
+    if (index < 0) {
+      index = index + 26;
+    }
+    hashkey += index;
   }
-  key += diff;
-  return key;
+
+  return hashkey;
 }
 
-// const strings = ['cpjtwqcdwbldwwrryuclcngw', 'huoybvhibgqibbwwdzhqhslb'];
-const strings = ['ab', 'ba'];
+const strings = ['abc', 'bcd', 'acef', 'xyz', 'az', 'ba', 'a', 'z'];
 
-console.log(groupStrings(strings));
-// console.log(generateHashKey(strings[1]));
+// console.log(groupStrings(strings));
+
+console.log(hash('al'));
