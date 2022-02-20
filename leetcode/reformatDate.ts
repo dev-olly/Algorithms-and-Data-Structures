@@ -14,12 +14,8 @@ function reformatDate(date: string): string {
   month.set('Dec', '12');
 
   const arr: string[] = date.split(' ');
-  let day = arr[0];
-  if (day.length === 3) {
-    day = `0${day.charAt(0)}`;
-  } else {
-    day = day.substring(0, 2);
-  }
+  let day =
+    arr[0].length === 3 ? `0${arr[0].charAt(0)}` : arr[0].substring(0, 2);
   let str = `${arr[2]}-${month.get(arr[1])}-${day}`;
 
   return str;
