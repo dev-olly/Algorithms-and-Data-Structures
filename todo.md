@@ -1,3 +1,0 @@
-- MergeSort(iteration)
-- HeapSort
-- Quicksort
