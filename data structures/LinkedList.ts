@@ -48,8 +48,10 @@ class LinkedList<T> implements ILinkedList<T> {
     this.count++;
     return node;
   }
-  popFirst(): void {
+  popFirst(): T {
+    const head = this.head;
     this.head = this.head.next;
+    return head.value;
   }
   popLast(): void {
     let node = this.head;
