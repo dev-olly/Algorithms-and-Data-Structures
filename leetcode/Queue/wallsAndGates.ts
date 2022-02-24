@@ -1,4 +1,4 @@
-import LinkedList from '../data structures/LinkedList';
+import LinkedList from '../../data structures/LinkedList';
 
 function wallsAndGates(rooms: number[][]): void {
   const room = 2147483647;
