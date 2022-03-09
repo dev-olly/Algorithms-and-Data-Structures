@@ -18,9 +18,9 @@ class Queue<T> {
     return this.#list;
   }
 
-  pop(): LinkedList<T> {
-    this.#list.popFirst();
-    return this.#list;
+  pop(): T {
+    const item = this.#list.popFirst();
+    return item;
   }
 
   isEmpty(): boolean {
