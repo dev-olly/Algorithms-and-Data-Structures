@@ -17,7 +17,6 @@ class Queue<T> {
     this.#list.addLast(item);
     return this.#list;
   }
-
   pop(): T {
     const item = this.#list.popFirst();
     return item;
