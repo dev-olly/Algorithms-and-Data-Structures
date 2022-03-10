@@ -62,7 +62,14 @@ class LinkedList<T> implements ILinkedList<T> {
     this.tail.next = null;
   }
   size(): number {
-    return this.count;
+    let count = 0;
+    let sentinel = new LinkedListNode<T>(null);
+    sentinel.next = this.head;
+    while (sentinel.next) {
+      sentinel = sentinel.next;
+      count++;
+    }
+    return count;
   }
   traverse(): void {
     let node = this.head;
