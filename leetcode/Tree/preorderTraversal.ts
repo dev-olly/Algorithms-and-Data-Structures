@@ -9,18 +9,37 @@ class TreeNode {
   }
 }
 
+// function preorderTraversal(root: TreeNode | null): number[] {
+//   //   console.log(root);
+//   const numbers = [];
+//   traverse(root, numbers);
+//   return numbers;
+// }
+
+// function traverse(root: TreeNode | null, numbers) {
+//   if (root === null) return;
+//   numbers.push(root.val);
+//   traverse(root.left, numbers);
+//   traverse(root.right, numbers);
+// }
+
 function preorderTraversal(root: TreeNode | null): number[] {
   //   console.log(root);
   const numbers = [];
-  traverse(root, numbers);
-  return numbers;
-}
+  const stack = [];
+  while (root) {
+    numbers.push(root.val);
 
-function traverse(root: TreeNode | null, numbers) {
-  if (root === null) return;
-  numbers.push(root.val);
-  traverse(root.left, numbers);
-  traverse(root.right, numbers);
+    if (root.right !== null) {
+      stack.push(root.right);
+    }
+    root = root.left;
+
+    if (root == null && stack.length !== 0) {
+      root = stack.pop();
+    }
+  }
+  return numbers;
 }
 
 const root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
