@@ -8,6 +8,6 @@ function reverseString(s: string[]): void {
   }
 }
 
-const s = ['H', 'a', 'n', 'm', 'a', 'h'];
+const s: string[] = ['H', 'a', 'n', 'm', 'a', 'h'];
 
 reverseString(s);
