@@ -11,20 +11,25 @@ class TreeNode {
 
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (root === null) return false;
-  const stack: [TreeNode, number][] = [];
+  const currentSum = targetSum - root.val;
+  if (currentSum === 0 && !root.left && !root.right) return true;
+  return (
+    hasPathSum(root.left, currentSum) || hasPathSum(root.right, currentSum)
+  );
+}
 
-  if (root.right) stack.push([root.right, targetSum - root.val]);
-  if (root.left) stack.push([root.left, targetSum - root.val]);
+function dfs(root: TreeNode | null): number[] {
+  if (root === null) return;
+  console.log(root.val);
+  dfs(root.left);
 
-  while (stack.length !== 0) {
-    const [node, sum] = stack.pop();
-    const currentSum = sum - node.val;
-    if (currentSum === 0 && !node.left && !node.right) return true;
-    if (node.right) stack.push([node.right, currentSum]);
-    if (node.left) stack.push([node.left, currentSum]);
-  }
+  let left_sum;
 
-  return false;
+  dfs(root.right);
+
+  let right_sum;
+
+  return [left_sum, right_sum];
 }
 
 const root = new TreeNode(
@@ -33,4 +38,4 @@ const root = new TreeNode(
   new TreeNode(3, null, null)
 );
 
-console.log(hasPathSum(root, 3));
+console.log(hasPathSum(root, 100));
