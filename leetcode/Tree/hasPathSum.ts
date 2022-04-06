@@ -15,6 +15,7 @@ function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
 
   if (root.right) stack.push([root.right, targetSum - root.val]);
   if (root.left) stack.push([root.left, targetSum - root.val]);
+  if (root.val === targetSum && !root.left && !root.right) return true;
 
   while (stack.length !== 0) {
     const [node, sum] = stack.pop();
