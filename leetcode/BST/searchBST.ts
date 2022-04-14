@@ -16,11 +16,30 @@ class TreeNode {
 //   return searchBST(root.left, val) || searchBST(root.right, val);
 // }
 
+// function searchBST(root: TreeNode | null, val: number): TreeNode | null {
+//   if (root === null) return null;
+//   if (root.val === val) return root;
+//   if (root.val > val) return searchBST(root.left, val);
+//   if (root.val < val) return searchBST(root.right, val);
+// }
+
+// using iteration
+
 function searchBST(root: TreeNode | null, val: number): TreeNode | null {
   if (root === null) return null;
   if (root.val === val) return root;
-  if (root.val > val) return searchBST(root.left, val);
-  if (root.val < val) return searchBST(root.right, val);
+  const stack: TreeNode[] = [];
+  if (root.right) stack.push(root.right);
+  if (root.left) stack.push(root.left);
+
+  while (stack.length) {
+    const node = stack.pop();
+    if (node.val === val) return node;
+    if (node.val > val && node.left) stack.push(node.left);
+    if (node.val < val && node.right) stack.push(node.right);
+  }
+
+  return null;
 }
 
 const root = new TreeNode(
