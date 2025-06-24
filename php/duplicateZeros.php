@@ -1,5 +1,5 @@
 <?php
-
+// See https://www.notion.so/Duplicate-Zeros-65b8f733af884794b37eb7d9cbc2e627?pvs=4
 class Solution {
 
     
@@ -44,7 +44,9 @@ class Solution {
             }
          }
 
+
         $startFrom = $arrSize - $duplicatableZeros;
+        print_r($startFrom);
 
         for ($i=$startFrom; $i >= 0 ; $i--) { 
             if($arr[$i] == 0) {
@@ -64,4 +66,4 @@ $solution = new Solution();
 
 $solution->duplicateZeros($arr);
 
-print_r($arr);
+// print_r($arr);

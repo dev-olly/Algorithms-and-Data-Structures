@@ -13,25 +13,27 @@ from typing import List
 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        abs_num = []
+        left = 0
+        right = len(nums) - 1
+        index = right 
 
-        for num in nums:
-          abs_num.append(num * num)
+        result = [0] * len(nums)
 
-        i = 0
-        j = len(nums) - 1 
+        while index >= 0 :
+          leftSquare = nums[left] * nums[left]
+          rightSquare = nums[right] * nums[right]
 
-        while i < j:
-          first = abs_num[i]
-          last = abs_num[j]
-          
-          if (first > last):
-            abs_num[i], abs_num[j] = abs_num[j], abs_num[i]
+          if leftSquare > rightSquare :
+            result[index] = leftSquare
+            left += 1
+          else :
+            result[index] = rightSquare
+            right -= 1
+      
+          index -= 1
 
-          j -= 1
-
-        return abs_num
+        return result
 
 solution = Solution()
 
-print(solution.sortedSquares([-4,-1,0,3,10]))
+print(solution.sortedSquares([-7,-3,2,3,11]))
